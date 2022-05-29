@@ -18,10 +18,78 @@ def get_user_data():
 	if (request.method == 'GET'):
 		user_data = {
 			"id" : 9178,
-			"name" : "Ishaan Dhamija"
+			"name" : "Rishabh Sharma",
+			"college": "IIT Delhi",
+			"pictureUrl": "https://picsum.photos/200"
+		}
+		response = {
+			"statusCode": 0,
+			"statusMessage": "user data fetched successfully",
+			"data": user_data
 		}
 
-		return jsonify(user_data)
+		return jsonify(response)
+
+@app.route('/job/openings', methods = ['GET'])
+def get_jobs_data():
+	if (request.method == 'GET'):
+		jobs_list = [
+			{
+				"id": 5231,
+				"designation": "Frontend Developer",
+				"company": "Flipkart",
+				"location": "Bengaluru",
+				"min_experience": "1",
+				"skills": ["HTML", "CSS", "Bootstrap", "jQuery", "Javascript", "React JS"]
+			},
+			{
+				"id": 5344,
+				"designation": "Android Developer",
+				"company": "Microsoft",
+				"location": "Noida",
+				"min_experience": "2",
+				"skills": ["Java", "Kotlin", "XML", "Android Studio"]
+			},
+			{
+				"id": 6012,
+				"designation": "Software Developer",
+				"company": "Amazon",
+				"location": "Gurugram",
+				"min_experience": "0",
+				"skills": ["Java", "Sprint Boot", "SQL", "Kafka"]
+			},
+			{
+				"id": 6638,
+				"designation": "Senior Software Engineer",
+				"company": "Swiggy",
+				"location": "Bengaluru",
+				"min_experience": "5",
+				"skills": ["Go", "Java", "Node JS"]
+			},
+			{
+				"id": 4256,
+				"designation": "iOS Developer",
+				"company": "Urban Company",
+				"location": "Gurugram",
+				"min_experience": "0",
+				"skills": ["C++", "Swift", "XCode"]
+			},
+			{
+				"id": 5634,
+				"designation": "Software Engineer",
+				"company": "Adobe",
+				"location": "Noida",
+				"min_experience": "2",
+				"skills": ["Java", "Sprint Boot", "SQL", "Kafka"]
+			}
+		]
+		response = {
+			"statusCode": 0,
+			"statusMessage": "jobs data fetched successfully",
+			"data": jobs_list
+		}
+
+		return jsonify(response)
 
 # main driver function
 if __name__ == '__main__':
