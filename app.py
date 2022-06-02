@@ -16,6 +16,18 @@ def hello_world():
 @app.route('/user/data', methods = ['GET'])
 def get_user_data():
 	if (request.method == 'GET'):
+		if (request.headers.get('uid') is None or request.headers['uid'] != '136'):
+			failure_response = {
+				"statusCode": 1,
+				"statusMessage": "bad request",
+				"data": {}
+			}
+
+			failure_response = jsonify(failure_response)
+			failure_response.headers.add('Access-Control-Allow-Origin', '*')
+
+			return failure_response
+
 		user_data = {
 			"id" : 9178,
 			"name" : "Rishabh Sharma",
@@ -36,6 +48,18 @@ def get_user_data():
 @app.route('/job/openings', methods = ['GET'])
 def get_jobs_data():
 	if (request.method == 'GET'):
+		if (request.headers.get('tid') is None or request.headers['tid'] != '3441'):
+			failure_response = {
+				"statusCode": 1,
+				"statusMessage": "bad request",
+				"data": {}
+			}
+
+			failure_response = jsonify(failure_response)
+			failure_response.headers.add('Access-Control-Allow-Origin', '*')
+
+			return failure_response
+		
 		jobs_list = [
 			{
 				"id": 5231,
