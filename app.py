@@ -1,19 +1,23 @@
 # Importing flask module in the project is mandatory
 # An object of Flask class is our WSGI application.
 from flask import Flask,jsonify,request
+from flask_cors import CORS, cross_origin
   
 # Flask constructor takes the name of 
 # current module (__name__) as argument.
 app = Flask(__name__)
+CORS(app, support_credentials=True)
   
 # The route() function of the Flask class is a decorator, 
 # which tells the application which URL should call 
 # the associated function.
 @app.route('/')
+@cross_origin(supports_credentials=True)
 def hello_world():
     return 'Hello World'
 
 @app.route('/user/data', methods = ['GET'])
+@cross_origin(supports_credentials=True)
 def get_user_data():
 	if (request.method == 'GET'):
 		user_data = {
@@ -31,6 +35,7 @@ def get_user_data():
 		return jsonify(response)
 
 @app.route('/job/openings', methods = ['GET'])
+@cross_origin(supports_credentials=True)
 def get_jobs_data():
 	if (request.method == 'GET'):
 		jobs_list = [
