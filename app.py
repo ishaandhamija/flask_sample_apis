@@ -28,7 +28,10 @@ def get_user_data():
 			"data": user_data
 		}
 
-		return jsonify(response)
+		response = jsonify(response)
+		response.headers.add('Access-Control-Allow-Origin', '*')
+
+		return response
 
 @app.route('/job/openings', methods = ['GET'])
 def get_jobs_data():
@@ -39,7 +42,7 @@ def get_jobs_data():
 				"designation": "Frontend Developer",
 				"company": "Flipkart",
 				"location": "Bengaluru",
-				"min_experience": "1",
+				"min_experience": 1,
 				"skills": ["HTML", "CSS", "Bootstrap", "jQuery", "Javascript", "React JS"]
 			},
 			{
@@ -47,7 +50,7 @@ def get_jobs_data():
 				"designation": "Android Developer",
 				"company": "Microsoft",
 				"location": "Noida",
-				"min_experience": "2",
+				"min_experience": 2,
 				"skills": ["Java", "Kotlin", "XML", "Android Studio"]
 			},
 			{
@@ -55,7 +58,7 @@ def get_jobs_data():
 				"designation": "Software Developer",
 				"company": "Amazon",
 				"location": "Gurugram",
-				"min_experience": "0",
+				"min_experience": 0,
 				"skills": ["Java", "Sprint Boot", "SQL", "Kafka"]
 			},
 			{
@@ -63,7 +66,7 @@ def get_jobs_data():
 				"designation": "Senior Software Engineer",
 				"company": "Swiggy",
 				"location": "Bengaluru",
-				"min_experience": "5",
+				"min_experience": 5,
 				"skills": ["Go", "Java", "Node JS"]
 			},
 			{
@@ -71,7 +74,7 @@ def get_jobs_data():
 				"designation": "iOS Developer",
 				"company": "Urban Company",
 				"location": "Gurugram",
-				"min_experience": "0",
+				"min_experience": 0,
 				"skills": ["C++", "Swift", "XCode"]
 			},
 			{
@@ -79,7 +82,7 @@ def get_jobs_data():
 				"designation": "Software Engineer",
 				"company": "Adobe",
 				"location": "Noida",
-				"min_experience": "2",
+				"min_experience": 2,
 				"skills": ["Java", "Sprint Boot", "SQL", "Kafka"]
 			}
 		]
@@ -89,7 +92,10 @@ def get_jobs_data():
 			"data": jobs_list
 		}
 
-		return jsonify(response)
+		response = jsonify(response)
+		response.headers.add('Access-Control-Allow-Origin', '*')
+
+		return response
 
 # main driver function
 if __name__ == '__main__':
